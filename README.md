@@ -3,6 +3,48 @@ CRYPTOR is a tool for encrypting and decrypting your things.
 
 
 ![image](https://github.com/user-attachments/assets/4215ebde-87fc-435b-805e-242999a6af91)
+from cryptography.fernet import Fernet
+from art import text2art
+
+# Stwórz napis "CRYPTOR 1.0" za pomocą modułu art
+text = text2art("CRYPTOR 1.0")
+
+# ASCII art dla kłódki
+lock = """
+   .----.
+  /      \\
+ |--------|
+ |        |
+ |        |
+ |   __   |
+ |  [  ]  |
+ |  ____  |
+ '.__.__.-'
+"""
+
+# Wyświetl kłódkę obok napisu
+print(lock)
+print(text)
+
+# Do szyfrowania
+message = input("Hi! Type text to crypt: ")
+
+# Klucz
+key = Fernet.generate_key()
+#print("Generated key:", key.decode())
+
+fernet = Fernet(key)
+
+# Szyfrowanie
+encoded_message = fernet.encrypt(message.encode())
+
+# Wyświetl Zakodowany Tekst
+print("\nYour crypted message is: \n" + encoded_message.decode())
+
+
+# Opinia
+rate = int(input("\nType stars (max 5)) : "))
+
 
 
 
@@ -51,4 +93,5 @@ CRYPTOR is a tool for encrypting and decrypting your things.
 3. Install ```git``` to clone this repository and run ```git clone https://github.com/ChomisiowiecGamer/CRYPTOR/``` or do manual download repository from this site. Command to install ``git`` on Linux ```sudo apt install git```.
 4. Go to that foler manualy or command ```cd /your/path/to/downloaded/or/cloned/repository```.
 5. In linux type ```ls``` on Windows you must go to to the ```File Manager``` and see what 's inside of this folder.
-6. Type in terminal ```python CRYPTOR 1.0.py``` and after this your computer ,you ,program are ready to use.
+6. Type in terminal ```pip install -r requirements.txt```.
+7. Type in terminal ```python CRYPTOR 1.0.py``` and after this your computer ,you ,program are ready to use.
